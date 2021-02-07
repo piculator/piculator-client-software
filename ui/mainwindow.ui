@@ -57,7 +57,22 @@
      </widget>
     </item>
     <item>
-     <layout class="QGridLayout" name="grid"/>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="grid">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>598</width>
+         <height>316</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout"/>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>

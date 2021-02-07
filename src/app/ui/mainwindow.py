@@ -16,4 +16,4 @@ class MainWindow(Ui_MainWindow):
     def setupAdditionalUi(self, MainWindow):
         for i in range(5):
             for j in range(5):
-                self.grid.addWidget(make_tile('../assets/icon/piculator-icon@64.png',"Hello", self.show_message_box), i, j)
+                self.gridLayout.addWidget(make_tile('../assets/icon/piculator-icon@64.png',"Hello", self.show_message_box), i, j)
