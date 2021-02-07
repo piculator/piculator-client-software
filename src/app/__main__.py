@@ -1,5 +1,5 @@
-from ui.mainwindow import MainWindow
-from QRunner import RunMainWindow
+from app.ui.mainwindow import MainWindow
+from app.QRunner import RunMainWindow
 import app
 
 retry_cnt = 5
