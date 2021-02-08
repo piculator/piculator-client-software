@@ -6,7 +6,7 @@ from . import func_settings, func_sage_notebook, \
 from app.logic.func import Function
 
 funcs = [
-    Function('设置', '设置 Piculator 的可选项.', '<null>', True,
+    Function('设置', '设置 Piculator 的可选项.', '../assets/icon/piculator-icon@64.png', True,
              ['configuration', 'settings'],
              func_settings.execute, func_settings.guest_fallback),
     Function('Sage笔记本', 'Sagemath 交互式数学笔记本', '<null>', False,
