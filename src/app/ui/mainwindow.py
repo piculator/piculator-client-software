@@ -17,7 +17,12 @@ class MainWindow(Ui_MainWindow):
         msg.exec()
 
     def search_funcs(self):
-        pass
+        s = self.searchbox.text()
+        for func in funcs:
+            if not func.search(s):
+                func.tile.setHidden(True)
+            else:
+                func.tile.setHidden(False)
 
     def setupAdditionalUi(self, MainWindow):
         self.search_btn.clicked.connect(self.search_funcs)
