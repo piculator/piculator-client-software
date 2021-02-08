@@ -1,4 +1,4 @@
-from . import func_settings_guest, func_settings, func_sage_notebook, \
+from . import func_settings, func_sage_notebook, \
     func_sage_online_notebook, func_sage_console, \
     func_local_console, func_local_ipython, func_python_ide, \
     func_simple_notepad, func_filesystem_manager, func_sensors, \
@@ -9,9 +9,6 @@ funcs = [
     Function('设置', '设置 Piculator 的可选项.', '<null>', True,
              ['configuration', 'settings'],
              func_settings.execute, func_settings.guest_fallback),
-    Function('设置', '设置 Piculator 的可选项.', '<null>', False,
-             ['configuration', 'settings'],
-             func_settings_guest.execute, None),
     Function('Sage笔记本', 'Sagemath 交互式数学笔记本', '<null>', False,
              ['jupyter', 'notebook'],
              func_sage_notebook.execute, None),
@@ -51,3 +48,4 @@ def configure_function_position():
             row += 1
         fun.column = col
         fun.row = row
+        col += 1

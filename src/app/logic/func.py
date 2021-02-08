@@ -1,5 +1,6 @@
 from typing import List, Callable, Union
 import app
+from app.ui.controls.tile_factory import make_tile
 
 
 class Function:
@@ -13,6 +14,7 @@ class Function:
         self.fun = fun
         self.guest_fallback = guest_fallback
         self.column = self.row = None
+        self.tile = None
 
     def search(self, txt: str):
         txt = txt.lower()
@@ -31,4 +33,4 @@ class Function:
             self.fun()
 
     def generate_tile(self):
-        pass
+        self.tile = make_tile(self.icon_path, self.name, self.desc, self.execute)
