@@ -10,5 +10,4 @@ if not app.login_manager.logged_in:
     while not app.login_manager.login():
         pass
 
-
 RunMainWindow(MainWindow)
