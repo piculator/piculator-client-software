@@ -1,4 +1,4 @@
-from app.utils.singleton import singleton
+from app.utils import singleton
 
 
 @singleton
