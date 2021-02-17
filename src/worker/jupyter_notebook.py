@@ -15,6 +15,7 @@ def jupyter_notebook_initialize():
 
     except:
         print('Invalid arguments!')
+        exit(-1)
 
     global notebook_handler
     notebook_handler = NotebookHandler()

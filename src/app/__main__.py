@@ -3,7 +3,6 @@ import sys
 from app import settings, login_manager
 from app.ui.mainwindow import MainWindow
 from app.QRunner import RunMainWindow
-import app
 
 retry_cnt = 5
 while retry_cnt > 0 and not login_manager.auto_login():
