@@ -11,7 +11,7 @@ class DataBridge:
         self.token = generate_token()
         self.listener = Listener(self.address, authkey=bytes(self.token, encoding='utf-8'))
         self.stop_event = Event()
-        self.thread = Thread(target=self._run, args=(self,))
+        self.thread = Thread(target=self._run)
         self.thread.setDaemon(True)
         self.connection = None
 

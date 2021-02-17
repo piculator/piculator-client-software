@@ -9,3 +9,4 @@ class PCSApp:
         self.mainwindow = None
         self.qmainwindow = None
         self.notebook_handler = None
+        self.data_bridge = None
