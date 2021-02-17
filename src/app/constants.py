@@ -1,3 +1,6 @@
+import platform
+
+
 class Ports:
     # jupyter notebook 的默认运行端口
     jupyter_notebook = 8888
@@ -9,4 +12,4 @@ class Ports:
     data_bridge = 40404
 
 
-sage_python_interpreter = '/home/pi/sage/sage-9.2/local/bin/python3'
+sage_python_interpreter = r"D:\Non-Green\SageMath 9.2\runtime\bin\python3.7m.exe" if platform.system() == 'Windows' else '/home/pi/sage/sage-9.2/local/bin/python3'
