@@ -1,5 +1,5 @@
 import sys
-from worker.jupyter_notebook import jupyter_notebook_main
+from worker.jupyter_notebook import jupyter_notebook_initialize, jupyter_notebook_main, jupyter_notebook_finalize
 from functools import reduce
 
 try:
@@ -10,8 +10,10 @@ except:
     print('Invalid arguments!')
     exit(-1)
 
+thread_unsafe_globals = {}
+
 command_mapping = {
-    'jupyter-notebook': jupyter_notebook_main,
+    'jupyter-notebook': (jupyter_notebook_initialize, jupyter_notebook_main, jupyter_notebook_finalize),
     'python-ide': None,
     'system-upgrade': None,
     'test-server': None

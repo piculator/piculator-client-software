@@ -3,6 +3,7 @@ from typing import Union
 
 from worker import secret_key
 from worker import port
+from worker import thread_unsafe_globals
 
 address = ('localhost', port)
 listener: Union[Listener, None] = None
@@ -15,7 +16,7 @@ def event_loop():
 
         if msg == 'exit':
             conn.close()
-        break
+            break
 
 
 def ipc_server():
