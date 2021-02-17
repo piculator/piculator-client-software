@@ -10,4 +10,4 @@ def RunMainWindow(ui):
     myapp.mainwindow.setupUi(myapp.qmainwindow)
     myapp.mainwindow.setupAdditionalUi(myapp.qmainwindow)
     myapp.qmainwindow.show()
-    sys.exit(myapp.qapp.exec())
+    return myapp.qapp.exec()
