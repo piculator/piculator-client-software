@@ -1,6 +1,8 @@
 import sys
-from worker.jupyter_notebook import jupyter_notebook_initialize, jupyter_notebook_main, jupyter_notebook_finalize
 from functools import reduce
+from threading import Thread
+
+thread_unsafe_globals = {}
 
 try:
     secret_key = sys.argv[3]
@@ -10,7 +12,15 @@ except:
     print('Invalid arguments!')
     exit(-1)
 
-thread_unsafe_globals = {}
+from worker.ipc import ipc_server
+
+server_thread = Thread(target=ipc_server)
+server_thread.setDaemon(True)
+
+def start_server_thread():
+    server_thread.start()
+
+from worker.jupyter_notebook import jupyter_notebook_initialize, jupyter_notebook_main, jupyter_notebook_finalize
 
 command_mapping = {
     'jupyter-notebook': (jupyter_notebook_initialize, jupyter_notebook_main, jupyter_notebook_finalize),
