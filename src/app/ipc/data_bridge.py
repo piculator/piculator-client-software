@@ -14,19 +14,23 @@ class DataBridge:
         self.thread = Thread(target=self._run)
         self.thread.setDaemon(True)
         self.connection = None
+        self.on_token_received = None
 
     def start(self):
         self.thread.start()
 
     def _run(self):
-        self.listener.accept()
+        self.connection = self.listener.accept()
         while not self.stop_event.is_set():
             msg = self.connection.recv()
-
-            if msg == 'exit':
+            print(f'[DataBridge]: Received message: {msg}')
+            if msg[0] == 'jupyter-token':
+                if callable(self.on_token_received): self.on_token_received(msg[1])
+            elif msg == 'exit':
                 self.connection.close()
                 break
         self.listener.close()
 
     def stop(self):
         self.stop_event.set()
+        print('[DataBridge]: stop event has been set.')
