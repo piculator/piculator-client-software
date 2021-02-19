@@ -16,18 +16,18 @@
 
 ### 7. 开发传感器功能
 
-### 7. 设计14个图标，宽140， 高100
+### 8. 设计14个图标，宽140， 高100
 
 - 要求1天内完成
 - 图标上包含标题， （按钮上只显示一张图片，不再显示文字）
 - 上传到`piculator-static-icons`
 
-### 8. （用脚本）将 Sage 的文档修改为适合在小屏设备上查看，接入Piculator
+### 9. （用脚本）将 Sage 的文档修改为适合在小屏设备上查看，接入Piculator
 
 - 要求1天内完成
 - 脚本上传到`piculator-client-software/scripts`
 
-### 9. 找一份 Python 教程（静态网页版/Jupyter notebook）， 修改为适合在小屏设备上查看，接入Piculator
+### 10. 找一份 Python 教程（静态网页版/Jupyter notebook）， 修改为适合在小屏设备上查看，接入Piculator
 
 - 要求1天内完成
 - 脚本上传到`piculator-client-software/scripts`
