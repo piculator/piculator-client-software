@@ -2,7 +2,8 @@ from . import func_settings, func_sage_notebook, \
     func_sage_online_notebook, func_sage_console, \
     func_local_console, func_local_ipython, func_python_ide, \
     func_simple_notepad, func_filesystem_manager, func_sensors, \
-    func_spreadsheet, func_documentation, func_learn_python, func_learn_sage, func_test
+    func_spreadsheet, func_documentation, func_learn_python, func_learn_sage, \
+    func_piculator_gamma, func_test
 from app.logic.func import Function
 
 funcs = [
@@ -37,6 +38,8 @@ funcs = [
              ['tutorial', 'documentation'], func_learn_python.execute),
     Function('Sage 教程', '详细的 sagemath 入门教程', '<null>', False,
              ['tutorial', 'documentation'], func_learn_sage.execute),
+    Function('Piculator Gamma', '由 Sympy Gamma 驱动的智能数学引擎', '<null>', False,
+             ['steps'], func_piculator_gamma.execute),
     Function('测试-Web browser', 'Web browser Test', '<null>', False,
              [], func_test.webbrowser_test)
 ]
