@@ -16,12 +16,12 @@ class PCSApp:
         self._current_web_window_ref_key = 0
 
     def get_web_window_ref_key(self):
-        self._current_web_window_ref_key+=1
+        self._current_web_window_ref_key += 1
         return self._current_web_window_ref_key - 1
 
     def get_new_wild_web_window(self):
         from app.ui.webwindow import WebWindow
         w = WebWindow()
         w.browser_ref_key = self.get_web_window_ref_key()
-        self.web_windows[w.browser_ref_key]=w
+        self.web_windows[w.browser_ref_key] = w
         return w

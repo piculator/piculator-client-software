@@ -37,7 +37,7 @@ funcs = [
              ['tutorial', 'documentation'], func_learn_python.execute),
     Function('Sage 教程', '详细的 sagemath 入门教程', '<null>', False,
              ['tutorial', 'documentation'], func_learn_sage.execute),
-    Function('测试-Web browser', 'Web browser Test','<null>', False,
+    Function('测试-Web browser', 'Web browser Test', '<null>', False,
              [], func_test.webbrowser_test)
 ]
 
