@@ -1,4 +1,3 @@
 PyQt5>=5.15.2
-PyQtWebEngine
-notebook
+jupyter-console
 EasySettings[all]
