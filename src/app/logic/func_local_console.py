@@ -1,2 +1,6 @@
+from app import terminal_executable
+
+
 def execute():
-    pass
+    from subprocess import Popen
+    Popen([terminal_executable])
