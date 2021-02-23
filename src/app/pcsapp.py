@@ -5,7 +5,6 @@ from PyQt5.QtNetwork import QNetworkAccessManager
 @singleton
 class PCSApp:
     def __init__(self):
-        self.webbrowser_testwindow = None
         self.qapp = None
         self.mainwindow = None
         self.qmainwindow = None
@@ -14,6 +13,7 @@ class PCSApp:
         self.q_network_access_manager = QNetworkAccessManager()
         self.web_windows = {}
         self._current_web_window_ref_key = 0
+        self.jupyter_manager_window = None
 
     def get_web_window_ref_key(self):
         self._current_web_window_ref_key += 1

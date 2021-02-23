@@ -7,12 +7,15 @@ from app import myapp
 from subprocess import Popen
 from app import sage_python_interpreter, ports
 from app.ipc.commander import Commander
-from app.ui.webwindow import WebWindow
+from app.ui.jupytermgrwindow import JupyterManagerWindow
 from app.utils import generate_token
 import os
 
 commander = None
-
+worker_token = generate_token()
+worker_port = ports.get_worker_port()
+wrapper = None
+worker_proc = None
 
 class NotebookThreadCommunicationWrapper(QObject):
     on_token_received = pyqtSignal(str)
@@ -23,8 +26,12 @@ class NotebookThreadCommunicationWrapper(QObject):
         self.on_token_received.connect(self.process_token_received)
 
     def process_token_received(self, tk):
+        myapp.jupyter_manager_window.setJupyterStatus('正在运行')
+        self.openBrowser()
+
+    def openBrowser(self):
         w = myapp.get_new_wild_web_window()
-        w.browser.setUrl(QUrl(f'http://127.0.0.1:8888/tree?token={tk}'))
+        w.browser.setUrl(QUrl(f'http://127.0.0.1:8888/tree?token={self.token}'))
         w.show()
 
     def data_bridge_thread_on_token_received(self, tk):
@@ -35,24 +42,42 @@ class NotebookThreadCommunicationWrapper(QObject):
 def execute():
     if myapp.data_bridge is None:
         myapp.data_bridge = DataBridge()
+    global wrapper
     wrapper = NotebookThreadCommunicationWrapper()
     myapp.data_bridge.on_token_received = wrapper.data_bridge_thread_on_token_received
-    # wrapper.on_token_received.connect(wrapper.process_token_received)
+    myapp.jupyter_manager_window = JupyterManagerWindow()
+    myapp.jupyter_manager_window.showMaximized()
     myapp.data_bridge.start()
-    worker_token = generate_token()
-    worker_port = ports.get_worker_port()
     env = dict(os.environ)
     env['PYTHONPATH'] = os.getcwd()
+    global worker_proc
     worker_proc = Popen(
         [sage_python_interpreter, '-m', 'worker', 'jupyter-notebook',
          str(worker_port), worker_token,
          str(ports.data_bridge), myapp.data_bridge.token], env=env)
+    myapp.jupyter_manager_window.setJupyterStatus('子进程已启动')
     global commander
     commander = Commander(worker_port, worker_token)
     t = 0
+    # TODO: 不建议在UI线程上执行长时间任务, 会导致界面假死, 改写为异步或者多线程
     while not commander.connect():
+        myapp.jupyter_manager_window.setJupyterStatus('正在连接到子进程...')
         sleep(1)
         t += 1
         if t > 120:
-            raise TimeoutError(f'Connection to worker-{worker_port} timed out after 120 seconds.')
-    commander.send('get-token')
+            myapp.jupyter_manager_window.setJupyterStatus('错误: 连接到子进程时出错')
+            break
+    else:
+        myapp.jupyter_manager_window.setJupyterStatus('已连接到子进程,等待子进程消息')
+        commander.send('get-token')
+
+def shutdown():
+    try:
+        commander.send('exit')
+        myapp.jupyter_manager_window.setJupyterStatus('正在/已停止')
+    except BrokenPipeError:
+        myapp.jupyter_manager_window.setJupyterStatus('已断开连接')
+
+def terminate():
+    worker_proc.kill()
+    myapp.jupyter_manager_window.setJupyterStatus('已强行停止')
