@@ -55,7 +55,9 @@ def event_loop():
             jupyter_notebook.commander.send(msg)
 
         elif msg == 'exit':
+            print(f'[worker-{port}]: Exit message received.')
             conn.close()
+            thread_unsafe_globals['notebook_handler'].stop()
             break
         else:
             pass
