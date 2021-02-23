@@ -22,7 +22,12 @@ class DataBridge:
     def _run(self):
         self.connection = self.listener.accept()
         while not self.stop_event.is_set():
-            msg = self.connection.recv()
+            try:
+                msg = self.connection.recv()
+            except EOFError:
+                print(f'[DataBridge]: Connection closed by the worker. DataBridge is stopping.')
+                self.stop_event.set()
+                break
             print(f'[DataBridge]: Received message: {msg}')
             if msg[0] == 'jupyter-token':
                 if callable(self.on_token_received): self.on_token_received(msg[1])
