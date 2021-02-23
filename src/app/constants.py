@@ -15,11 +15,3 @@ class Ports:
     def get_worker_port(cls):
         cls._next_worker_port += 1
         return cls._next_worker_port - 1
-
-
-sage_versions_root = '/home/pi/sage'
-sage_root = sage_versions_root + '/sage-9.2'
-sage_python_interpreter = sage_root + '/local/bin/python3'
-sage_executable = sage_root + '/sage'
-terminal_executable = 'x-terminal-emulator'
-terminal_execute_parameter = '-e'

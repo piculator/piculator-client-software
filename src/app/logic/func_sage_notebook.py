@@ -5,7 +5,7 @@ from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, pyqtBoundSignal, QUrl
 from app.ipc import DataBridge
 from app import myapp
 from subprocess import Popen
-from app import sage_python_interpreter, ports
+from app import settings, ports
 from app.ipc.commander import Commander
 from app.ui.jupytermgrwindow import JupyterManagerWindow
 from app.utils import generate_token
@@ -52,7 +52,7 @@ def execute():
     env['PYTHONPATH'] = os.getcwd()
     global worker_proc
     worker_proc = Popen(
-        [sage_python_interpreter, '-m', 'worker', 'jupyter-notebook',
+        [settings['sage_python_interpreter'], '-m', 'worker', 'jupyter-notebook',
          str(worker_port), worker_token,
          str(ports.data_bridge), myapp.data_bridge.token], env=env)
     myapp.jupyter_manager_window.setJupyterStatus('子进程已启动')

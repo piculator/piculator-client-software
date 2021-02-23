@@ -1,6 +1,6 @@
-from app import terminal_executable
+from app import settings
 
 
 def execute():
     from subprocess import Popen
-    Popen([terminal_executable])
+    Popen([settings['terminal_executable']])
