@@ -129,3 +129,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ui文件转出的py文件
+ui/*.py
+! ui/ui_launcher.py
+
+# 个人命令文档
+useful_command.md

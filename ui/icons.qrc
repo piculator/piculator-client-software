@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="banner">
-    <file>console_80px.png</file>
-    <file>piculator-banner-colorful@512x128.png</file>
-    <file>piculator-banner-colorful@256x64.png</file>
-  </qresource>
-  <qresource prefix="新前缀"/>
-</RCC>
