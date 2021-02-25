@@ -1,18 +1,18 @@
 # 当前工作
 
-### 1. 完成内嵌的 web browser 开发(*)
+### ~~1. 完成内嵌的 web browser 开发~~
 
-### 2. 开发客户端登录flask云端
+### ==2. 开发客户端登录flask云端==
 
-### 3. 开发 jupyter-notebook 客户端功能（*)
+### ==3. 开发 jupyter-notebook 客户端功能==
 
-### 4. 开发云盘功能（文件同步）
+### ==4. 开发云盘功能（文件同步）==
 
-### 5. 找一个 Python IDE 轮子， 接入此项目
+### ~~5. 找一个 Python IDE 轮子， 接入此项目~~
 
-### 6. 找一个 Python 电子表格轮子， 接入此项目
+### ==6. 开发蓝牙文件传输功能==
 
-- Grid Studio 值得考虑
+### ~~7. 开发 Docker 容器 : JupyterHub + Sagemath~~
 
 ### 7. 开发传感器功能
 
