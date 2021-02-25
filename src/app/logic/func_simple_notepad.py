@@ -1,2 +1,3 @@
 def execute():
-    pass
+    from subprocess import Popen
+    Popen(['mousepad'])
