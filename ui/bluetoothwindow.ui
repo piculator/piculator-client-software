@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BluetoothSharingWindow</class>
+ <widget class="QWidget" name="BluetoothSharingWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>436</width>
+    <height>269</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>蓝牙分享</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelForDeviceSelection">
+     <property name="text">
+      <string>选择设备</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QHBoxLayout" name="horizontal_deviceSelection">
+     <item>
+      <widget class="QComboBox" name="combo_devices"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="refreshDeviceList">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>重新扫描</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelForAction">
+     <property name="text">
+      <string>操作</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <layout class="QVBoxLayout" name="vertical_groupboxes">
+     <item>
+      <widget class="QGroupBox" name="group_send">
+       <property name="title">
+        <string>发送文件</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_send"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontal_sendActions">
+          <item>
+           <widget class="QPushButton" name="browseFilesBtn">
+            <property name="text">
+             <string>浏览</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="sendBtn">
+            <property name="text">
+             <string>发送</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="group_receive">
+       <property name="title">
+        <string>接收文件</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelForRecvTo">
+          <property name="text">
+           <string>接收到</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit_recv"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="labelForRecvActions">
+          <property name="text">
+           <string>操作</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontal_recvActions">
+          <item>
+           <widget class="QPushButton" name="browseFoldersBtn">
+            <property name="text">
+             <string>浏览</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="setDefaultRecvFolder">
+            <property name="text">
+             <string>设为默认接收文件夹</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="recvBtn">
+            <property name="text">
+             <string>接收</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelForDev">
+     <property name="text">
+      <string>Dev</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="horizontal_dev">
+     <item>
+      <widget class="QPushButton" name="debugBtn_1">
+       <property name="text">
+        <string>调试</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
