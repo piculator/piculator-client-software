@@ -3,7 +3,7 @@ from . import func_settings, func_sage_notebook, \
     func_local_console, func_local_ipython, func_python_ide, \
     func_simple_notepad, func_filesystem_manager, func_sensors, \
     func_spreadsheet, func_documentation, func_learn_python, func_learn_sage, \
-    func_piculator_gamma, func_test
+    func_piculator_gamma, func_test, func_bluetooth
 from app.logic.func import Function
 
 funcs = [
@@ -40,6 +40,8 @@ funcs = [
              ['tutorial', 'documentation'], func_learn_sage.execute),
     Function('Piculator Gamma', '由 Sympy Gamma 驱动的智能数学引擎', '<null>', False,
              ['steps'], func_piculator_gamma.execute),
+    Function('蓝牙分享', '使用蓝牙发送和接收文件', '<null>', False,
+             ['bluetooth', 'share'], func_bluetooth.execute),
     Function('测试-Web browser', 'Web browser Test', '<null>', False,
              [], func_test.webbrowser_test)
 ]

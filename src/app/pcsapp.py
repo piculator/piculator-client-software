@@ -14,6 +14,7 @@ class PCSApp:
         self.web_windows = {}
         self._current_web_window_ref_key = 0
         self.jupyter_manager_window = None
+        self.bluetooth_window = None
 
     def get_web_window_ref_key(self):
         self._current_web_window_ref_key += 1
