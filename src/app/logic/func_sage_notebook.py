@@ -1,6 +1,7 @@
 from time import sleep
 
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, pyqtBoundSignal, QUrl
+from PyQt5.QtWidgets import QMessageBox
 
 from app.ipc import DataBridge
 from app import myapp
@@ -40,7 +41,9 @@ class NotebookThreadCommunicationWrapper(QObject):
 
 
 def execute():
-    if myapp.data_bridge is None:
+    if myapp.data_bridge is not None and myapp.data_bridge.thread.is_alive():
+        QMessageBox.warning(myapp.mainwindow,"警告","此功能已在运行中, 不能重复启动",QMessageBox.Ok)
+    else:
         myapp.data_bridge = DataBridge()
     global wrapper
     wrapper = NotebookThreadCommunicationWrapper()
