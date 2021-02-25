@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QWidget, QMessageBox
 
 from app.base_ui.jupytermanager_base import Ui_JupyterManagerWindow
 from app import myapp
+from app.logic.func_fallback import prompt_func_not_implemented
 
 
 class JupyterManagerWindow(Ui_JupyterManagerWindow, QWidget):
@@ -34,3 +35,6 @@ class JupyterManagerWindow(Ui_JupyterManagerWindow, QWidget):
         self.stopServer.clicked.connect(shutdown)
         self.forceStopServer.clicked.connect(terminate)
         self.openBrowser.clicked.connect(self._openBrowser)
+        self.openJupyterToturial.clicked.connect(prompt_func_not_implemented)
+        self.openPythonInteractiveToturial.clicked.connect(prompt_func_not_implemented)
+        self.openSageInteractiveToturial.clicked.connect(prompt_func_not_implemented)
