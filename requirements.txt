@@ -1,4 +1,5 @@
 PyQt5>=5.15.2
 jupyter-console
 PyBluez
+requests
 EasySettings[all]
