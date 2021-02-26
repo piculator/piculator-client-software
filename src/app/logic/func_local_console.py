@@ -1,2 +1,6 @@
+from app import settings
+
+
 def execute():
-    pass
+    from subprocess import Popen
+    Popen([settings['terminal_executable']])

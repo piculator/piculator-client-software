@@ -1,2 +1,4 @@
 PyQt5>=5.15.2
-PyQtWebEngine
+jupyter-console
+PyBluez
+EasySettings[all]

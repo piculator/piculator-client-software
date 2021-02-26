@@ -1,5 +1,8 @@
+import webbrowser
+
+
 def execute():
-    pass
+    webbrowser.open('https://hub.kxxt.tech')
 
 
 def guest_fallback():
