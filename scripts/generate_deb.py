@@ -7,6 +7,8 @@ version = input('Please input version:')
 package_path = f'{package_name}_{version}'
 files_path = f'{package_path}/opt/piculator-client/'
 os.makedirs(files_path, exist_ok=True)
+os.system(f'mkdir -p {package_path}/DEBIAN/')
+os.system(f'mkdir -p {package_path}/usr/bin/')
 os.system(f'cp -r ../src/** {files_path}')
 os.system(f'cp piculator-client {package_path}/usr/bin/piculator-client')
 os.system(f'cp preinst.sh {package_path}/DEBIAN/preinst')
