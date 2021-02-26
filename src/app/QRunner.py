@@ -9,5 +9,5 @@ def RunMainWindow(ui):
     myapp.mainwindow = ui()
     myapp.mainwindow.setupUi(myapp.qmainwindow)
     myapp.mainwindow.setupAdditionalUi(myapp.qmainwindow)
-    myapp.qmainwindow.show()
+    myapp.qmainwindow.showMaximized()
     return myapp.qapp.exec()
