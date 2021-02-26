@@ -3,7 +3,7 @@ from . import func_settings, func_sage_notebook, \
     func_local_console, func_local_ipython, func_python_ide, \
     func_simple_notepad, func_filesystem_manager, func_sensors, \
     func_spreadsheet, func_documentation, func_learn_python, func_learn_sage, \
-    func_piculator_gamma, func_test, func_bluetooth, func_stopwatch
+    func_piculator_gamma, func_fallback, func_bluetooth, func_stopwatch, func_user_center
 from app.logic.func import Function
 
 funcs = [
@@ -44,6 +44,8 @@ funcs = [
              ['steps'], func_piculator_gamma.execute),
     Function('蓝牙分享', '使用蓝牙发送和接收文件', 'assets/icon/bluetooth.png', False,
              ['bluetooth', 'share'], func_bluetooth.execute),
+    Function('用户中心', '用户中心', 'assets/icon/user-center.png', True,
+             ['user', 'center', 'portal'], func_user_center.execute, func_fallback.prompt_guest_not_allowed)
 ]
 
 

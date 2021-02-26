@@ -1,5 +1,5 @@
 from PyQt5 import QtGui
-from PyQt5.QtGui import QCloseEvent
+from PyQt5.QtGui import QCloseEvent, QIcon
 from PyQt5.QtWidgets import QWidget, QMessageBox
 
 from app.base_ui.jupytermanager_base import Ui_JupyterManagerWindow
@@ -12,6 +12,7 @@ class JupyterManagerWindow(Ui_JupyterManagerWindow, QWidget):
         super().__init__()
         self.setupUi(self)
         self.connectSignals()
+        self.setWindowIcon(QIcon('assets/piculator.ico'))
 
     def closeEvent(self, ev: QCloseEvent):
         result = QMessageBox.warning(self, '警告', '关闭此窗口将停止 Jupyter notebook, 是否继续?', QMessageBox.Yes | QMessageBox.No,

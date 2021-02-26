@@ -1,5 +1,4 @@
 from typing import List, Callable, Union
-import app
 from app.ui.controls.tile_factory import make_tile
 
 
@@ -27,7 +26,8 @@ class Function:
             return False
 
     def execute(self):
-        if self.login_required and app.login_manager.is_guest:
+        from app import myapp
+        if self.login_required and myapp.login_manager.is_guest:
             self.guest_fallback()
         else:
             self.fun()

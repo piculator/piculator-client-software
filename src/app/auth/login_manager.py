@@ -1,20 +1,24 @@
 from app.utils import singleton
-from .user import User
+from app.auth.user import User
+from app.ui.loginwindow import LoginWindow
 
 
 @singleton
 class LoginManager:
     def __init__(self):
         self.logged_in = False
-        self.is_guest = True
         self.user = User('guest')
-        self.last_login_status = None
+        self.login_window = LoginWindow()
+        self.server_url = ''
 
     def auto_login(self):
-        self.logged_in = True
-        return True
+        return False
 
-    def login(self):
-        return True
+    @property
+    def is_guest(self):
+        return self.user.is_guest
 
-
+    def process_manual_login(self):
+        from app import myapp
+        self.login_window.showMaximized()
+        myapp.qapp.exec()

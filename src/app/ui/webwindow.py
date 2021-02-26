@@ -15,6 +15,8 @@ class WebWindow(QMainWindow):
         self.browser = BrowserView()
         self.setCentralWidget(self.browser)
         self.browser.page().setNetworkAccessManager(myapp.q_network_access_manager)
+        self.setWindowIcon(QIcon('assets/piculator.ico'))
+        self.setWindowTitle('内置浏览器')
         self.browser_ref_key = None
 
     def closeEvent(self, qce):
