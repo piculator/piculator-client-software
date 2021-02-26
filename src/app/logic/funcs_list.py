@@ -3,7 +3,7 @@ from . import func_settings, func_sage_notebook, \
     func_local_console, func_local_ipython, func_python_ide, \
     func_simple_notepad, func_filesystem_manager, func_sensors, \
     func_spreadsheet, func_documentation, func_learn_python, func_learn_sage, \
-    func_piculator_gamma, func_test, func_bluetooth
+    func_piculator_gamma, func_test, func_bluetooth, func_stopwatch
 from app.logic.func import Function
 
 funcs = [
@@ -28,6 +28,8 @@ funcs = [
              ['notepad'], func_simple_notepad.execute),
     Function('文件管理', '管理文件系统', '<null>', False,
              ['files'], func_filesystem_manager.execute),
+    Function('秒表', '简单的秒表', '<null>', False,
+             ['stopwatch'], func_stopwatch.execute),
     Function('传感器', '获取传感器数据', '<null>', False,
              ['sensor'], func_sensors.execute),
     Function('电子表格', '可 Python 编程的电子表格', '<null>', False,
@@ -42,8 +44,6 @@ funcs = [
              ['steps'], func_piculator_gamma.execute),
     Function('蓝牙分享', '使用蓝牙发送和接收文件', '<null>', False,
              ['bluetooth', 'share'], func_bluetooth.execute),
-    Function('测试-Web browser', 'Web browser Test', '<null>', False,
-             [], func_test.webbrowser_test)
 ]
 
 
