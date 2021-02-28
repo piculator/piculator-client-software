@@ -1,3 +1,3 @@
 def execute():
     from subprocess import Popen
-    Popen(['mousepad'])
+    Popen(['mousepad'], cwd='/home/pi')

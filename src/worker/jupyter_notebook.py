@@ -37,8 +37,7 @@ class NotebookHandler:
     def __init__(self):
         self.app: NotebookApp = NotebookApp()
         self.app.open_browser = False
-        self.app.data_dir = '/home/pi'
-        self.app.initialize([])
+        self.app.initialize(['--notebook-dir=/home/pi'])
         self.access_url = self.app.display_url[2]
         self.running = False
 
