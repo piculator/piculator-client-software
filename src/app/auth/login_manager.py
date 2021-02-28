@@ -22,3 +22,18 @@ class LoginManager:
         from app import myapp
         self.login_window.showMaximized()
         myapp.qapp.exec()
+    
+    def _url_append_x(self,page):
+        '''parameter page should not begin with /'''
+        if self.server_url[-1]=='/':
+            return self.server_url + page
+        else:
+            return self.server_url + '/' + page
+    
+    @property
+    def login_url(self):
+        return self._url_append_x('login')
+    
+    @property
+    def register_url(self):
+        return self._url_append_x('register')

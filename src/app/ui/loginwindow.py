@@ -25,7 +25,6 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
         self.register_window = None
         self.logged_in = None
         self.remember_password = None
-        self.url = ''
         self.data = None
         self._result = None
         self.label.setStyleSheet(
@@ -33,7 +32,6 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
 
     def handleLogin(self):
         # QLineEdit.text()方法可以传入输入的文本
-        # self.url = self.ui.serverLineEdit.text()
         # QCheckBox.isChecked()方法可以传入复选框是否选中的真假值
         self.remember_password = self.rememberPasswordCheckBox.isChecked()
         self.data = {
@@ -41,9 +39,10 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
             "password": self.passwordLineEdit.text(),
             "is_from_client": True
         }
-        self.url = self.serverLineEdit.text()
+        from app import myapp
+        myapp.login_manager.server_url = self.serverLineEdit.text()
         try:
-            self._result = requests.post(self.url, self.data).json()
+            self._result = requests.post(myapp.login_manager.login_url, self.data).json()
         except:
             self._result = {
                 'is_logged_in': False,
@@ -53,7 +52,6 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
             from app import myapp
             myapp.login_manager.user.username = self.data['username']
             myapp.login_manager.logged_in = True
-            myapp.login_manager.server_url = self.url
             myapp.mainwindow.showMaximized()
             self.close()
             myapp.login_manager.login_window = None
@@ -68,7 +66,6 @@ class LoginWindow(QMainWindow, Ui_LoginWindow):
             self.logged_in = True
             from app import myapp
             myapp.login_manager.user.username = self.register_window.data['username']
-            myapp.login_manager.server_url = self.register_window.url
             myapp.login_manager.logged_in = True
             myapp.mainwindow.showMaximized()
             self.close()

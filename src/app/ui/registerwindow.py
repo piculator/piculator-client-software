@@ -8,7 +8,6 @@ from app.base_ui.registerwindow_base import Ui_RegisterWindow
 class RegisterWindow(QDialog, Ui_RegisterWindow):
     def __init__(self):
         super().__init__()
-        self.url = None
         self.setupUi(self)
         self.setWindowIcon(QIcon('assets/piculator.ico'))
         self.piculatorLogoLable.setStyleSheet(
@@ -36,9 +35,10 @@ class RegisterWindow(QDialog, Ui_RegisterWindow):
         self.username = self.usernameLineEdit.text()
         self.password = self.passwordLineEdit.text()
         self.re_password = self.rePasswordLineEdit.text()
-        self.url = self.serverLineEdit.text()
+        from app import myapp
+        myapp.login_manager.server_url = self.serverLineEdit.text()
 
-        if not (self.username and self.password and self.re_password and self.identity and self.url):
+        if not (self.username and self.password and self.re_password and self.identity and myapp.login_manager.register_url):
             self.allow_register = False
             self.warning = "表单信息不完整"
         elif not self.serviceItemCheckBox.isChecked():
@@ -58,7 +58,7 @@ class RegisterWindow(QDialog, Ui_RegisterWindow):
                 "is_from_client": True,
             }
             try:
-                self._result = requests.post(self.url, self.data).json()
+                self._result = requests.post(myapp.login_manager.register_url, self.data).json()
             except:
                 self._result = {
                     'is_registered': False,
