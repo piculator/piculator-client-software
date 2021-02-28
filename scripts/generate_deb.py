@@ -21,7 +21,7 @@ Name: {name}
 Description: {desp}
 Version: {version}
 Section: base
-Depends: python3-pyqt5.qtwebkit, python3-pyqt5, python3-jupyter-console, python3-bluez, mousepad, python3-requests
+Depends: python3-pyqt5.qtwebkit, python3-pyqt5, python3-jupyter-console, python3-bluez, mousepad, python3-requests, piculator-sage-documentation-en, python3-doc, piculator-localhost, piculator-static-gamma, piculator-static-icons, piculator-mu-editor, piculator-static-stopwatch
 Author: Piculator Development Team <piculator@protonmail.com>
 Maintainer: Piculator Development Team <piculator@protonmail.com>
 HomePage: https://github.com/piculator/{package_name}-software
